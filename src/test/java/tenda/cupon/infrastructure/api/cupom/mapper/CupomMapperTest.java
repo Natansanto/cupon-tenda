@@ -1,10 +1,10 @@
 package tenda.cupon.infrastructure.api.cupom.mapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tenda.cupon.test.util.CupomTestUtils.CODIGO_SANITIZADO;
-import static tenda.cupon.test.util.CupomTestUtils.DESCRICAO;
-import static tenda.cupon.test.util.CupomTestUtils.cupomNovo;
-import static tenda.cupon.test.util.CupomTestUtils.requestCriarCupom;
+import static tenda.cupon.util.CupomTestUtils.CODIGO_SANITIZADO;
+import static tenda.cupon.util.CupomTestUtils.DESCRICAO;
+import static tenda.cupon.util.CupomTestUtils.cupomNovo;
+import static tenda.cupon.util.CupomTestUtils.requestCriarCupom;
 
 import org.junit.jupiter.api.Test;
 

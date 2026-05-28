@@ -3,8 +3,11 @@ package tenda.cupon.infrastructure.persistence.adapter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static tenda.cupon.test.util.CupomTestUtils.cupomEntity;
-import static tenda.cupon.test.util.CupomTestUtils.cupomRestaurado;
+import static tenda.cupon.util.CupomTestUtils.ID;
+import static tenda.cupon.util.CupomTestUtils.cupomEntity;
+import static tenda.cupon.util.CupomTestUtils.cupomRestaurado;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,6 +46,28 @@ class CupomRepositoryImplTest {
 		verify(cupomEntityMapper).toEntity(cupom);
 		verify(jpaCupomRepository).save(entidade);
 		verify(cupomEntityMapper).toDomain(entidade);
+	}
+
+	@Test
+	void buscarPorId_deveRetornarCupomQuandoExistir() {
+		var cupom = cupomRestaurado();
+		var entidade = cupomEntity(cupom);
+
+		when(jpaCupomRepository.findById(ID)).thenReturn(Optional.of(entidade));
+		when(cupomEntityMapper.toDomain(entidade)).thenReturn(cupom);
+
+		Optional<Cupom> resultado = cupomRepositoryImpl.buscarPorId(ID);
+
+		assertThat(resultado).contains(cupom);
+	}
+
+	@Test
+	void buscarPorId_deveRetornarVazioQuandoNaoExistir() {
+		when(jpaCupomRepository.findById(ID)).thenReturn(Optional.empty());
+
+		Optional<Cupom> resultado = cupomRepositoryImpl.buscarPorId(ID);
+
+		assertThat(resultado).isEmpty();
 	}
 
 }

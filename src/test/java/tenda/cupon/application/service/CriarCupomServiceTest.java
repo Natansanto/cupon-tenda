@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static tenda.cupon.test.util.CupomTestUtils.CODIGO_SANITIZADO_ALTERNATIVO;
-import static tenda.cupon.test.util.CupomTestUtils.cupomNovoServico;
+import static tenda.cupon.util.CupomTestUtils.CODIGO_SANITIZADO_ALTERNATIVO;
+import static tenda.cupon.util.CupomTestUtils.cupomNovoServico;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -22,7 +22,8 @@ public interface CupomEntityMapper {
 				entidade.getDataExpiracao(),
 				StatusCupom.valueOf(entidade.getStatus()),
 				entidade.isPublicado(),
-				entidade.isResgatado());
+				entidade.isResgatado(),
+				entidade.isDeletado());
 	}
 
 }
