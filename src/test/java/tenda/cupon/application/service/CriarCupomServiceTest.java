@@ -8,6 +8,7 @@ import static tenda.cupon.util.CupomTestUtils.CODIGO_SANITIZADO_ALTERNATIVO;
 import static tenda.cupon.util.CupomTestUtils.cupomNovoServico;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -32,7 +33,8 @@ class CriarCupomServiceTest {
 	}
 
 	@Test
-	void criar_deveDelegarPersistenciaAoRepositorio() {
+	@DisplayName("Deve delegar persistência ao repositório")
+	void deveDelegarPersistenciaAoRepositorio() {
 		when(cupomRepository.salvar(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
 		var cupom = cupomNovoServico();

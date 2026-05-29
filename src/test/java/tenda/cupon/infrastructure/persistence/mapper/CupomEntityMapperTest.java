@@ -7,6 +7,7 @@ import static tenda.cupon.util.CupomTestUtils.cupomEntityResgatado;
 import static tenda.cupon.util.CupomTestUtils.cupomRestauradoDeletado;
 import static tenda.cupon.util.CupomTestUtils.cupomRestauradoPublicado;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import tenda.cupon.domain.enums.StatusCupom;
@@ -18,7 +19,8 @@ class CupomEntityMapperTest {
 	private final CupomEntityMapper mapper = new CupomEntityMapperImpl();
 
 	@Test
-	void toEntity_deveMapearStatusEDeletado() {
+	@DisplayName("Deve mapear status e flag deletado")
+	void deveMapearStatusEDeletado() {
 		var cupom = cupomRestauradoPublicado();
 
 		CupomEntity entidade = mapper.toEntity(cupom);
@@ -30,7 +32,8 @@ class CupomEntityMapperTest {
 	}
 
 	@Test
-	void toEntity_deveMapearCupomDeletado() {
+	@DisplayName("Deve mapear cupom deletado")
+	void deveMapearCupomDeletado() {
 		var cupom = cupomRestauradoDeletado();
 
 		CupomEntity entidade = mapper.toEntity(cupom);
@@ -39,7 +42,8 @@ class CupomEntityMapperTest {
 	}
 
 	@Test
-	void toDomain_deveRestaurarCupomComDeletado() {
+	@DisplayName("Deve restaurar cupom com deletado")
+	void deveRestaurarCupomComDeletado() {
 		var entidade = cupomEntityResgatado(ID);
 		entidade.setDeletado(true);
 
