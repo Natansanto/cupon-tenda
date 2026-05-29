@@ -19,6 +19,9 @@
 * Foi configurado JaCoCo para relatório de cobertura (mvn verify → target/site/jacoco/index.html)
 * Foi configurado Docker e Docker Compose na pasta devops/ (container: cupon-tenda-app, porta 8080)
 
+<img width="1526" height="820" alt="image" src="https://github.com/user-attachments/assets/531addcf-1397-471a-82a8-5588000dde08" />
+
+
 # Desenvolvimento local
 
 - Swagger: http://localhost:8080/swagger-ui.html
