@@ -1,4 +1,4 @@
-## Considerações — projeto cupon-tenda
+## Considerações - projeto cupon-tenda
 
 * Foi utilizado o banco de dados H2 (em memória no ambiente local e em arquivo no Docker)
 * Foi utilizado Java 17.
