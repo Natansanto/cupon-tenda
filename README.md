@@ -20,6 +20,8 @@
 * Foi configurado Docker e Docker Compose na pasta devops/ (container: cupon-tenda-app, porta 8080)
 
 <img width="1526" height="820" alt="image" src="https://github.com/user-attachments/assets/531addcf-1397-471a-82a8-5588000dde08" />
+<img width="1428" height="128" alt="image" src="https://github.com/user-attachments/assets/e1a94541-14e4-434b-8795-02d30a0d61ca" />
+
 
 
 # Desenvolvimento local
