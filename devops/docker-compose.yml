@@ -1,0 +1,17 @@
+name: cupon-tenda
+
+services:
+  app:
+    container_name: cupon-tenda-app
+    build:
+      context: ..
+      dockerfile: devops/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    volumes:
+      - h2_data:/data
+
+volumes:
+  h2_data:
