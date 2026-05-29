@@ -1,5 +1,6 @@
 package tenda.cupon.application.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
@@ -13,6 +14,7 @@ import static tenda.cupon.util.CupomTestUtils.cupomRestauradoDeletado;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -36,7 +38,8 @@ class DeletarCupomServiceTest {
 	}
 
 	@Test
-	void deletar_deveMarcarCupomComoDeletadoEPersistir() {
+	@DisplayName("Deve marcar cupom como deletado e persistir")
+	void deveMarcarCupomComoDeletadoEPersistir() {
 		var cupom = cupomRestaurado();
 		when(cupomRepository.buscarPorId(ID)).thenReturn(Optional.of(cupom));
 		when(cupomRepository.salvar(cupom)).thenReturn(cupom);
@@ -44,11 +47,12 @@ class DeletarCupomServiceTest {
 		service.deletar(ID);
 
 		verify(cupomRepository).salvar(cupom);
-		org.assertj.core.api.Assertions.assertThat(cupom.isDeletado()).isTrue();
+		assertThat(cupom.isDeletado()).isTrue();
 	}
 
 	@Test
-	void deletar_deveRetornar404QuandoCupomNaoExiste() {
+	@DisplayName("Deve retornar 404 quando cupom não existe")
+	void deveRetornar404QuandoCupomNaoExiste() {
 		when(cupomRepository.buscarPorId(ID_INEXISTENTE)).thenReturn(Optional.empty());
 
 		assertThatThrownBy(() -> service.deletar(ID_INEXISTENTE))
@@ -59,7 +63,8 @@ class DeletarCupomServiceTest {
 	}
 
 	@Test
-	void deletar_deveRetornarErroQuandoCupomJaDeletado() {
+	@DisplayName("Deve retornar erro quando cupom já foi deletado")
+	void deveRetornarErroQuandoCupomJaDeletado() {
 		var cupom = cupomRestauradoDeletado();
 		when(cupomRepository.buscarPorId(ID)).thenReturn(Optional.of(cupom));
 

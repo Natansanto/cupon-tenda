@@ -13,7 +13,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Coupon API")
+                        .title("Cupon API")
                         .version("v1")
                         .description("API responsável pelo gerenciamento de cupons"));
     }
