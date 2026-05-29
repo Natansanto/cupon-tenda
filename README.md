@@ -1,12 +1,6 @@
-# cupon-tenda
-
-API de cupons (Spring Boot 4, Java 17).
+Microsserviço
 
 ## Desenvolvimento local
-
-```bash
-./mvnw spring-boot:run
-```
 
 - Swagger: http://localhost:8080/swagger-ui.html
 - H2 Console: http://localhost:8080/h2-console (JDBC `jdbc:h2:mem:cupondb`, usuário `tenda`, senha vazia)
@@ -39,5 +33,5 @@ docker compose up --build
 ```bash
 docker compose -f devops/docker-compose.yml up -d --build
 docker compose -f devops/docker-compose.yml down
-docker compose -f devops/docker-compose.yml down -v   # remove também o volume do H2
+docker compose -f devops/docker-compose.yml down -v   
 ```
