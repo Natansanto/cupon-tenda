@@ -6,6 +6,7 @@ import static tenda.cupon.util.CupomTestUtils.DESCRICAO;
 import static tenda.cupon.util.CupomTestUtils.cupomNovo;
 import static tenda.cupon.util.CupomTestUtils.requestCriarCupom;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import tenda.cupon.domain.enums.StatusCupom;
@@ -16,7 +17,8 @@ class CupomMapperTest {
 	private final CupomMapper mapper = new CupomMapperImpl();
 
 	@Test
-	void fromRequest_deveCriarCupomDeDominio() {
+	@DisplayName("Deve criar cupom de domínio a partir da requisição")
+	void deveCriarCupomDeDominio() {
 		Cupom cupom = mapper.fromRequest(requestCriarCupom());
 
 		assertThat(cupom.getCodigo()).isEqualTo(CODIGO_SANITIZADO);
@@ -26,7 +28,8 @@ class CupomMapperTest {
 	}
 
 	@Test
-	void toResponse_deveMapearStatusComoString() {
+	@DisplayName("Deve mapear status como string na resposta")
+	void deveMapearStatusComoString() {
 		Cupom cupom = cupomNovo();
 
 		var response = mapper.toResponse(cupom);

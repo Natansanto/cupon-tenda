@@ -9,6 +9,7 @@ import static tenda.cupon.util.CupomTestUtils.cupomRestaurado;
 
 import java.util.Optional;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -32,7 +33,8 @@ class CupomRepositoryImplTest {
 	private CupomRepositoryImpl cupomRepositoryImpl;
 
 	@Test
-	void salvar_deveConverterPersistirERetornarDominio() {
+	@DisplayName("Deve converter, persistir e retornar domínio")
+	void deveConverterPersistirERetornarDominio() {
 		var cupom = cupomRestaurado();
 		var entidade = cupomEntity(cupom);
 
@@ -49,7 +51,8 @@ class CupomRepositoryImplTest {
 	}
 
 	@Test
-	void buscarPorId_deveRetornarCupomQuandoExistir() {
+	@DisplayName("Deve retornar cupom quando existir")
+	void deveRetornarCupomQuandoExistir() {
 		var cupom = cupomRestaurado();
 		var entidade = cupomEntity(cupom);
 
@@ -62,7 +65,8 @@ class CupomRepositoryImplTest {
 	}
 
 	@Test
-	void buscarPorId_deveRetornarVazioQuandoNaoExistir() {
+	@DisplayName("Deve retornar vazio quando cupom não existir")
+	void deveRetornarVazioQuandoNaoExistir() {
 		when(jpaCupomRepository.findById(ID)).thenReturn(Optional.empty());
 
 		Optional<Cupom> resultado = cupomRepositoryImpl.buscarPorId(ID);

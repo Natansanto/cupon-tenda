@@ -1,8 +1,18 @@
 package tenda.cupon.util;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
+
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+
+import com.jayway.jsonpath.JsonPath;
 
 import tenda.cupon.domain.enums.StatusCupom;
 import tenda.cupon.domain.model.Cupom;
@@ -110,6 +120,32 @@ public final class CupomTestUtils {
 				.resgatado(true)
 				.deletado(false)
 				.build();
+	}
+
+	public static String codigoUnicoSeisCaracteres(String prefixo) {
+		String sufixo = UUID.randomUUID().toString().replace("-", "").substring(0, 6 - prefixo.length());
+		return prefixo + sufixo;
+	}
+
+	public static String criarCupomERetornarId(MockMvc mockMvc, String codigoBruto, String descricao) throws Exception {
+		String corpo = """
+				{
+				  "codigo": "%s",
+				  "descricao": "%s",
+				  "valorDesconto": 0.8,
+				  "dataExpiracao": "%s",
+				  "publicado": false
+				}
+				""".formatted(codigoBruto, descricao, DATA_EXPIRACAO_FUTURA);
+
+		MvcResult resultado = mockMvc.perform(post("/cupom")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(corpo))
+				.andExpect(status().isCreated())
+				.andExpect(jsonPath("$.id").exists())
+				.andReturn();
+
+		return JsonPath.read(resultado.getResponse().getContentAsString(), "$.id");
 	}
 
 }
