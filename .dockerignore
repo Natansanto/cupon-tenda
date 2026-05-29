@@ -1,0 +1,12 @@
+# Docker usa o contexto na raiz do projeto (devops/docker-compose.yml).
+# Regras alinhadas com devops/.dockerignore
+target/
+.git/
+.gitignore
+.idea/
+*.iml
+.vscode/
+*.md
+devops/.env
+.env
+.env.*
