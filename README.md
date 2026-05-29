@@ -16,7 +16,7 @@
 *   DELETE /cupom/{id} — exclusão lógica (soft delete, status 204)
 * Regras de negócio no domínio (Cupom): código sanitizado (6 caracteres), desconto mínimo, data de expiração futura, resgate e exclusão lógica
 * Foram feitos testes unitários (services, mappers, repositório) e teste de integração para o fluxo de deleção
-* Foi configurado JaCoCo para relatório de cobertura (mvn verify → target/site/jacoco/index.html)
+* Foi configurado JaCoCo para relatório de cobertura (.\mvnw.cmd clean verify → target/site/jacoco/index.html)
 * Foi configurado Docker e Docker Compose na pasta devops/ (container: cupon-tenda-app, porta 8080)
 
 <img width="1526" height="820" alt="image" src="https://github.com/user-attachments/assets/531addcf-1397-471a-82a8-5588000dde08" />
